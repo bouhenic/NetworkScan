@@ -11,31 +11,30 @@ root.title("SCANNER RESEAU")
 var_réseau = tk.StringVar()
 
 def scan():
-
+    #Scan du réseau en utilisant arp-scan à installer préalablement, le résultat est copié en fichier texte resulktat.txt
     resultat = os.system(f"arp-scan {var_réseau.get()} > resultat.txt")
-    print(var_réseau.get())
-    with open("./resultat.txt", "r") as f:
-        contenu = f.read()
-        regex = re.compile("(([0-9]{1,3}\.){3}[0-9]{1,3})\s([a-fA-F0-9:]{17})\s(\w*\,*)")
-
-        resultat = regex.findall(contenu)
-        nbrmatch = len(resultat)
+    with open("./resultat.txt", "r") as f:#ouverture de resulktat.txt
+        contenu = f.read() #lecture du fichier
+        regex = re.compile("(([0-9]{1,3}\.){3}[0-9]{1,3})\s([a-fA-F0-9:]{17})\s(\w*\,*)") #regex IP,MAC et HOST
+        resultat = regex.findall(contenu) #recherche des matchs entre regex et contenu (fichier texte)
+        nbrmatch = len(resultat)#détermination du nombre de match
         IP = ""
 
         for i in range(nbrmatch):
-            IP += resultat[i][0] + "\n"
+            IP += resultat[i][0] + "\n" #lecture des matchs IP set stockage dans la variable IP
             varip.set(f"{IP}")
 
         MAC = ""
         for i in range(nbrmatch):
-            MAC += resultat[i][2] + "\n"
+            MAC += resultat[i][2] + "\n" #lecture des matchs MAC set stockage dans la variable MAC
             varmac.set(f"{MAC}")
 
         HOST = ""
         for i in range(nbrmatch):
-            HOST += resultat[i][3] + "\n"
+            HOST += resultat[i][3] + "\n" #lecture des matchs MAC set stockage dans la variable MAC
             varhost.set(f"{HOST}")
 
+#détermination des frames
 frame_quitter=ttk.Frame(root)
 frame_quitter.pack(fill="x",side="bottom",ipady=20)
 frame_button=ttk.Frame(root)
