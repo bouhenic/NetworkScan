@@ -1,0 +1,9 @@
+Interface: en0, type: EN10MB, MAC: 78:4f:43:6c:f5:bb, IPv4: 192.168.1.49
+Starting arp-scan 1.9.7 with 256 hosts (https://github.com/royhills/arp-scan)
+192.168.1.13	e4:9e:12:2f:62:f2	FREEBOX SAS
+192.168.1.18	04:a3:16:e8:80:72	Texas Instruments
+192.168.1.254	e4:9e:12:7a:34:3a	FREEBOX SAS
+192.168.1.43	a4:83:e7:43:75:d2	Apple, Inc.
+
+523 packets received by filter, 0 packets dropped by kernel
+Ending arp-scan 1.9.7: 256 hosts scanned in 1.889 seconds (135.52 hosts/sec). 4 responded
